@@ -13,12 +13,12 @@
     Azure RemoteApp Collection Name from which user disks will be migrated out.
 
 .PARAMETER storageAccountName
-    [Optional] Azure Storage Account Name where exported disks will be temporary stored.
+    Azure Storage Account Name where exported disks will be temporary stored.
 #>
 Param (
     [parameter(Mandatory=$true, ValueFromPipeline=$true,HelpMessage="Name of Azure Subscription to use")] [String]$AzureSubscriptionName = "",
     [parameter(Mandatory=$true, ValueFromPipeline=$true,HelpMessage="Azure RemoteApp Collection Name")] [String]$CollectionName = "",
-    [parameter(Mandatory=$false, ValueFromPipeline=$true,HelpMessage="Storage Account Name")] [String]$storageAccountName = ""
+    [parameter(Mandatory=$true, ValueFromPipeline=$true,HelpMessage="Storage Account Name")] [String]$storageAccountName = ""
     )
 
 

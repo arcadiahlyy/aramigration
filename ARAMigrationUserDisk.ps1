@@ -23,7 +23,7 @@ Param (
     [parameter(Mandatory=$true, ValueFromPipeline=$true,HelpMessage="Name of Azure Subscription to use")] [String]$AzureSubscriptionName = "",
     [parameter(Mandatory=$true, ValueFromPipeline=$true,HelpMessage="Azure RemoteApp Collection Name")] [String]$CollectionName = "",
     [parameter(Mandatory=$true, ValueFromPipeline=$true,HelpMessage="Destination SMB Share")] [String]$SMBShare = "",
-    [parameter(Mandatory=$false, ValueFromPipeline=$true,HelpMessage="Storage Account Name (default = araexport)")] [String]$StorageAccountName = ""
+    [parameter(Mandatory=$true, ValueFromPipeline=$true,HelpMessage="Storage Account Name")] [String]$StorageAccountName = ""
     )
 
 # Export user disks of a domain joined collection to the specified Azure Storage Account
