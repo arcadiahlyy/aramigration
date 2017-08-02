@@ -171,6 +171,9 @@ $migrationStatus = WaitForWorkItemComplete -trackingItemId $trackingId.TrackingI
 if($migrationStatus -eq "Failed")
 {
     Write-Host "User disk migration failed, tracking id:" $trackingId.TrackingId
+    Write-Host "Here're two potential issues you may hit:"
+    Write-Host "    1.	At least one UPD is locked, please make sure all end users are logged off.
+    2.	Export limit of 3 times has been reached, please contact us to bump it up."
     return    
 }
 if($migrationStatus -eq "TimedOut")
