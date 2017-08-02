@@ -244,8 +244,10 @@ $templateFilename = "UVHD-template.vhdx"
 $templateSrcPath = $SMBShare + "\" + $templateFilename
 $ContainerName = "uvhds"
 
+$oldCurrentDirectory = (Get-Location -PSProvider FileSystem).ProviderPath
 try
 {
+    [Environment]::CurrentDirectory = (Get-Location -PSProvider FileSystem).ProviderPath
     InstallXDrive
 }
 catch
@@ -253,6 +255,9 @@ catch
     log "Failed to install XDrive driver"
     $error[0].Exception
     throw
+}
+finally {
+    [Environment]::CurrentDirectory = $oldCurrentDirectory
 }
 
 
