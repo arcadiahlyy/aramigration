@@ -1,7 +1,7 @@
 ﻿Param (
     [parameter(Mandatory=$true, ValueFromPipeline=$true,HelpMessage="Destination SMB Share")] [String]$SMBShare,
-    [parameter(Mandatory=$false, ValueFromPipeline=$true,HelpMessage="Storage Account Name")] [String]$storageAccountName,
-    [parameter(Mandatory=$false, ValueFromPipeline=$true,HelpMessage="SAS key for accessing UserDisks")] [String]$sasKey
+    [parameter(Mandatory=$true, ValueFromPipeline=$true,HelpMessage="Storage Account Name")] [String]$storageAccountName,
+    [parameter(Mandatory=$true, ValueFromPipeline=$true,HelpMessage="SAS key for accessing UserDisks")] [String]$sasKey
     )
 
 
