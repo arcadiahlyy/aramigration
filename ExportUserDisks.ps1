@@ -67,6 +67,9 @@ Function CreateSASForUserVHDContainer
     {
         New-AzureStorageContainerStoredAccessPolicy -Container $ContainerName -Policy $PolicyName -Context $Ctx -ExpiryTime $expiryTime -Permission rwl | Out-Null
     }
+    else {
+        Set-AzureStorageContainerStoredAccessPolicy -Container $ContainerName -Policy $PolicyName -Context $Ctx -ExpiryTime $expiryTime -Permission rwl | Out-Null
+    }
     $sastoken = New-AzureStorageContainerSASToken -Name $ContainerName -Policy $PolicyName -Context $Ctx
 
     $sastoken

@@ -4,6 +4,7 @@ param(
     [parameter(mandatory = $true)][ValidateNotNullOrEmpty()] [string]$adminUsername,
     [parameter(mandatory = $true)][ValidateNotNullOrEmpty()] [string]$adminPassword,
     [parameter(mandatory = $true)][ValidateNotNullOrEmpty()] [string]$adDomainName,
+    [parameter(mandatory = $true)][ValidateNotNullOrEmpty()] [string]$vhdFileShareName,
 
     [Parameter(ValueFromRemainingArguments = $true)]
     $extraParameters
@@ -24,11 +25,12 @@ function SetFSACLs
 
     log "Setting fileshare ACLs"
 
-    # $TODO - Hardcoded UserVHDs, rdsh-0 and broker
-    Grant-SmbShareAccess -Name UserVHDs -AccountName theschmieders\rdsh-0$ -accessright full -confirm:$false
-    Grant-SmbShareAccess -Name UserVHDs -AccountName theschmieders\broker$ -accessright full -confirm:$false
-    # $TODO - Hardcoded
-    set-smbpathacl -ShareName "UserVHDs"
+    $adDomainName = ($adDomainName.Split('.'))[0]
+    
+    Grant-SmbShareAccess -Name $vhdFileShareName -AccountName $adDomainName\rdsh-0$ -accessright full -confirm:$false
+    Grant-SmbShareAccess -Name $vhdFileShareName -AccountName $adDomainName\broker$ -accessright full -confirm:$false
+
+    set-smbpathacl -ShareName $vhdFileShareName
 }
 
 
