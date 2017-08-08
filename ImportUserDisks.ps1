@@ -331,9 +331,7 @@ if (Get-Module -ListAvailable -Name PnpDevice) {
     Disable-PnpDevice -InstanceId $ser.InstanceId -Confirm:$false -ErrorAction Stop | Out-Null
 } else {
     Write-Host "Please manually disable XDrive driver from device manager if needed"
-    $retVal = 1
 }
-
 
 
 exit $retVal
